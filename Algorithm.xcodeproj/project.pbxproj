@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6DBE54D4206E1F8700ABA708 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE54D3206E1F8700ABA708 /* main.c */; };
+		6DBE54DD206E1FCD00ABA708 /* LinkNode.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE54DB206E1FCD00ABA708 /* LinkNode.c */; };
+		6DBE54E0206E24F700ABA708 /* LinkNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE54DE206E24F700ABA708 /* LinkNodeTest.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		6DBE54D0206E1F8700ABA708 /* Algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithm; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DBE54D3206E1F8700ABA708 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		6DBE54DB206E1FCD00ABA708 /* LinkNode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkNode.c; sourceTree = "<group>"; };
+		6DBE54DC206E1FCD00ABA708 /* LinkNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkNode.h; sourceTree = "<group>"; };
+		6DBE54DE206E24F700ABA708 /* LinkNodeTest.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkNodeTest.c; sourceTree = "<group>"; };
+		6DBE54DF206E24F700ABA708 /* LinkNodeTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkNodeTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,21 @@
 		6DBE54D2206E1F8700ABA708 /* Algorithm */ = {
 			isa = PBXGroup;
 			children = (
+				6DBE54DA206E1F9500ABA708 /* LinkList */,
 				6DBE54D3206E1F8700ABA708 /* main.c */,
 			);
 			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		6DBE54DA206E1F9500ABA708 /* LinkList */ = {
+			isa = PBXGroup;
+			children = (
+				6DBE54DC206E1FCD00ABA708 /* LinkNode.h */,
+				6DBE54DB206E1FCD00ABA708 /* LinkNode.c */,
+				6DBE54DF206E24F700ABA708 /* LinkNodeTest.h */,
+				6DBE54DE206E24F700ABA708 /* LinkNodeTest.c */,
+			);
+			path = LinkList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DBE54D4206E1F8700ABA708 /* main.c in Sources */,
+				6DBE54DD206E1FCD00ABA708 /* LinkNode.c in Sources */,
+				6DBE54E0206E24F700ABA708 /* LinkNodeTest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

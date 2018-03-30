@@ -7,9 +7,12 @@
 //
 
 #include <stdio.h>
+#include "LinkNodeTest.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    
+    linkNodeTest();
+    
+    
     return 0;
 }
