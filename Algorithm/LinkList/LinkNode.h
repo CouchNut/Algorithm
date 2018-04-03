@@ -53,4 +53,9 @@ single_link *getMiddleNode(single_link *pHead);
  */
 single_link *mergeSortedList(single_link *pFirstNode, single_link *pSecondNode);
 
+/**
+ *  将数组转为链表返回
+ */
+single_link * createWithArray(int arr[], int len);
+
 #endif /* LinkNode_h */

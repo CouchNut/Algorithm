@@ -152,3 +152,22 @@ single_link *mergeSortedList(single_link *pFirstNode, single_link *pSecondNode) 
     }
     return mergeList;
 }
+
+/**
+ *  将数组转为链表返回
+ */
+single_link * createWithArray(int arr[], int len) {
+    single_link *result_Link, *tempLink;
+    result_Link = (single_link *)malloc(sizeof(single_link));
+    result_Link->p_next = NULL;
+    tempLink = result_Link;
+    for (int i = 0; i < len; i++) {
+        single_link *link = (single_link *)malloc(sizeof(single_link));
+        link->p_next = NULL;
+        link->value = arr[i];
+        tempLink->p_next = link;
+        tempLink = link;
+    }
+    result_Link = result_Link->p_next;
+    return result_Link;
+}
