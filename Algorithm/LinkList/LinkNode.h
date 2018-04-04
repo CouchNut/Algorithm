@@ -58,4 +58,11 @@ single_link *mergeSortedList(single_link *pFirstNode, single_link *pSecondNode);
  */
 single_link * createWithArray(int arr[], int len);
 
+/**
+ *  判断一个单链表中是否有环
+ *  返回结果：
+ *      1 -> YES; 0 -> NO;
+ */
+int hasCircle(single_link *pHead);
+
 #endif /* LinkNode_h */

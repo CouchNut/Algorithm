@@ -171,3 +171,21 @@ single_link * createWithArray(int arr[], int len) {
     result_Link = result_Link->p_next;
     return result_Link;
 }
+
+/**
+ *  判断一个单链表中是否有环
+ *  返回结果：
+ *      1 -> YES; 0 -> NO;
+ */
+int hasCircle(single_link *pHead) {
+    single_link *pFast = pHead;
+    single_link *pSlow = pHead;
+    while (pFast != NULL && pSlow != NULL) {
+        pFast = pFast->p_next->p_next;
+        pSlow = pSlow->p_next;
+        if (pFast == pSlow) {
+            return 1;
+        }
+    }
+    return 0;
+}
