@@ -19,6 +19,10 @@ void linkNodeTest() {
     rGetKthNodeTest();
     getMiddleNodeTest();
     hasCicleTest();
+    isIntersectedTest();
+    getFirstCommonNodeTest();
+    deleteNodeTest();
+    getFitstNodeInCircleTest();
 }
 
 
@@ -108,3 +112,76 @@ void getMiddleNodeTest(void) {
     printf("===== 测试获取链表的中间节点结束 =====\n");
 }
 
+/**
+ 测试判断两个单链表是否相交
+ */
+void isIntersectedTest(void) {
+    printf("===== 开始测试判断两个单链表是否相交 =====\n");
+    int arr3[] = {1, 3, 7, 9, 13};
+    int arr3_len = sizeof(arr3) / sizeof(arr3[0]);
+    single_link *tempLink3 = createWithArray(arr3, arr3_len);
+    single_link *tempLink4 = rGetKthNode(tempLink3, 3);
+    printf("原链表：\n");
+    printLink(tempLink3);
+    printLink(tempLink4);
+    int result = isIntersected(tempLink3, tempLink4);
+    printf("两个链表是否有相交点：\n%s\n", result == 0 ? "NO" : "YES");
+    printf("测试之后的原链表：\n");
+    printLink(tempLink3);
+    printLink(tempLink4);
+    printf("===== 测试判断两个单链表是否相交结束 =====\n");
+}
+
+/**
+ 获取两个单链表相交的第一个节点测试
+ */
+void getFirstCommonNodeTest(void) {
+    printf("===== 开始测试获取两个单链表相交的第一个节点 =====\n");
+    int arr3[] = {1, 3, 7, 9, 13};
+    int arr3_len = sizeof(arr3) / sizeof(arr3[0]);
+    single_link *tempLink3 = createWithArray(arr3, arr3_len);
+    single_link *tempLink4 = rGetKthNode(tempLink3, 3);
+    printf("原链表：\n");
+    printLink(tempLink3);
+    printLink(tempLink4);
+    single_link *result = getFirstCommonNode(tempLink3, tempLink4);
+    printf("相交的第一个节点值为：\n%d\n", result->value);
+    printf("测试之后的原链表：\n");
+    printLink(tempLink3);
+    printLink(tempLink4);
+    printf("===== 测试获取两个单链表相交的第一个节点结束 =====\n");
+}
+
+/**
+ 测试已知一个单链表中存在环，求进入环中的第一个节点
+ */
+void getFitstNodeInCircleTest(void) {
+    printf("===== 开始测试已知一个单链表中存在环，求进入环中的第一个节点 =====\n");
+    int array[] = {1, 3, 7, 9, 13, 45};
+    single_link *tempLink = createWithArray(array, sizeof(array) / sizeof(array[0]));
+    single_link *crossNode = rGetKthNode(tempLink, 3);
+    single_link *lastNode = rGetKthNode(tempLink, 1);
+    lastNode->p_next = crossNode;
+    printf("原链表：\n");
+    // printLink(tempLink);  // 此处会陷入死循环，因为打印链表只能是无环链表
+    single_link *result = getFitstNodeInCircle(tempLink);
+    printf("环中的第一个节点值为：\n%d\n", result->value);
+    printf("===== 测试已知一个单链表中存在环，求进入环中的第一个节点结束 =====\n");
+}
+
+/**
+ 删除链表中的某个节点测试
+ */
+void deleteNodeTest(void) {
+    printf("===== 开始测试删除链表中的某个节点 =====\n");
+    int arr3[] = {1, 3, 7, 9, 13};
+    int arr3_len = sizeof(arr3) / sizeof(arr3[0]);
+    single_link *tempLink3 = createWithArray(arr3, arr3_len);
+    single_link *tempLink4 = rGetKthNode(tempLink3, 3);
+    printf("原链表：\n");
+    printLink(tempLink3);
+    deleteNode(tempLink3, tempLink4);
+    printf("删除之后的原链表：\n");
+    printLink(tempLink3);
+    printf("===== 测试删除链表中的某个节点结束 =====\n");
+}

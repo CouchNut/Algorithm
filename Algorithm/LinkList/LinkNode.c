@@ -189,3 +189,146 @@ int hasCircle(single_link *pHead) {
     }
     return 0;
 }
+
+/**
+ *  判断两个单链表是否相交
+ *  返回结果：
+ *      1 -> YES; 0 -> NO;
+ */
+int isIntersected(single_link *pFirtst, single_link *pSecond) {
+    if (pFirtst == NULL || pSecond == NULL) {
+        return 0;
+    }
+    single_link *pTrailFirst = pFirtst;
+    while (pTrailFirst->p_next != NULL) {
+        pTrailFirst = pTrailFirst->p_next;
+    }
+    single_link *pTrailSecond = pSecond;
+    while (pTrailSecond->p_next != NULL) {
+        pTrailSecond = pTrailSecond->p_next;
+    }
+    return pTrailSecond == pTrailFirst;
+}
+
+/**
+ *  获取两个单链表相交的第一个节点
+ */
+single_link *getFirstCommonNode(single_link *pFirtst, single_link *pSecond) {
+    if (pFirtst == NULL || pSecond == NULL) {
+        return NULL;
+    }
+    unsigned int firstLen = 0;
+    single_link *pTrailFirst = pFirtst;
+    while (pTrailFirst->p_next != NULL) {
+        pTrailFirst = pTrailFirst->p_next;
+        firstLen++;
+    }
+    unsigned int secondLen = 0;
+    single_link *pTrailSecond = pSecond;
+    while (pTrailSecond->p_next != NULL) {
+        pTrailSecond = pTrailSecond->p_next;
+        secondLen++;
+    }
+    if (pTrailFirst != pTrailSecond) {
+        return NULL;
+    }
+    single_link *pNode1 = pFirtst;
+    single_link *pNode2 = pSecond;
+    if (firstLen > secondLen) {
+        int k = firstLen - secondLen;
+        while (k--) {
+            pNode1 = pNode1->p_next;
+        }
+    }
+    else {
+        int k = secondLen - firstLen;
+        while (k--) {
+            pNode2 = pNode2->p_next;
+        }
+    }
+    while (pNode2 != pNode1) {
+        pNode2 = pNode2->p_next;
+        pNode1 = pNode1->p_next;
+    }
+    return pNode1;
+}
+
+/**
+ *  已知一个单链表中存在环，求进入环中的第一个节点
+ */
+single_link *getFitstNodeInCircle(single_link *pHead) {
+    if (pHead == NULL || pHead->p_next == NULL) {
+        return NULL;
+    }
+    single_link *pFastNode = pHead;
+    single_link *pSlowNode = pHead;
+    while (pFastNode != NULL || pFastNode->p_next != NULL) {
+        pFastNode = pFastNode->p_next->p_next;
+        pSlowNode = pSlowNode->p_next;
+        if (pFastNode == pSlowNode) {
+            break;
+        }
+    }
+    if (pSlowNode == NULL || pSlowNode->p_next == NULL) {
+        return NULL;
+    }
+    single_link *pAssumedTrail = pSlowNode;
+    single_link *pHead1 = pHead;
+    single_link *pHead2 = pAssumedTrail->p_next;
+    single_link *pNode1 = pHead1;
+    unsigned int node1Len = 0;
+    while (pNode1 != pAssumedTrail) {
+        pNode1 = pNode1->p_next;
+        node1Len ++;
+    }
+    single_link *pNode2 = pHead2;
+    unsigned int node2Len = 0;
+    while (pNode2 != pAssumedTrail) {
+        pNode2 = pNode2->p_next;
+        node2Len ++;
+    }
+    pNode1 = pHead1;
+    pNode2 = pHead2;
+    if (node1Len > node2Len) {
+        unsigned int k = node1Len - node2Len;
+        while (k--) {
+            pNode1 = pNode1->p_next;
+        }
+    }
+    else {
+        unsigned int k = node2Len - node1Len;
+        while (k--) {
+            pNode2 = pNode2->p_next;
+        }
+    }
+    while (pNode1 != pNode2) {
+        pNode1 = pNode1->p_next;
+        pNode2 = pNode2->p_next;
+    }
+    return pNode1;
+}
+
+/**
+ *  删除链表中的某个节点
+ */
+void deleteNode(single_link *pHead, single_link *toBeDeleteNode) {
+    if (toBeDeleteNode == NULL) {
+        return;
+    }
+    if (toBeDeleteNode->p_next != NULL) {
+        toBeDeleteNode->value = toBeDeleteNode->p_next->value;
+        toBeDeleteNode->p_next = toBeDeleteNode->p_next->p_next;
+    }
+    else {
+        if (pHead == toBeDeleteNode) {
+            pHead = NULL;
+        }
+        else {
+            single_link *pNode = pHead;
+            while (pNode->p_next != toBeDeleteNode) {
+                pNode = pNode->p_next;
+            }
+            pNode->p_next = NULL;
+        }
+    }
+}

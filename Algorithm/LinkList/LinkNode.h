@@ -65,4 +65,26 @@ single_link * createWithArray(int arr[], int len);
  */
 int hasCircle(single_link *pHead);
 
+/**
+ *  判断两个单链表是否相交
+ *  返回结果：
+ *      1 -> YES; 0 -> NO;
+ */
+int isIntersected(single_link *pFitst, single_link *pSecond);
+
+/**
+ *  获取两个单链表相交的第一个节点
+ */
+single_link *getFirstCommonNode(single_link *pFitst, single_link *pSecond);
+
+/**
+ *  已知一个单链表中存在环，求进入环中的第一个节点
+ */
+single_link *getFitstNodeInCircle(single_link *pHead);
+
+/**
+ *  删除链表中的某个节点
+ */
+void deleteNode(single_link *pHead, single_link *toBeDeleteNode);
+
 #endif /* LinkNode_h */

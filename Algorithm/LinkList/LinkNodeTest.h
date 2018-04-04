@@ -48,4 +48,24 @@ void rGetKthNodeTest(void);
  */
 void getMiddleNodeTest(void);
 
+/**
+ 测试判断两个单链表是否相交
+ */
+void isIntersectedTest(void);
+
+/**
+ 获取两个单链表相交的第一个节点测试
+ */
+void getFirstCommonNodeTest(void);
+
+/**
+ 测试已知一个单链表中存在环，求进入环中的第一个节点
+ */
+void getFitstNodeInCircleTest(void);
+
+/**
+ 删除链表中的某个节点测试
+ */
+void deleteNodeTest(void);
+
 #endif /* LinkNodeTest_h */
